@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rilevazione Cambiamenti con Canvas</title>
+    <style>
+        #video {
+            width: 640px;
+            height: 480px;
+        }
+    </style>
+</head>
+<body>
+    <!--start button che serve per iniziare il monitoraggio-->
+    <button id="startCapture">Inizia Cattura</button>
+    <!--video di monitoraggio-->
+    <video id="video" autoplay></video>
+    <canvas id="canvas"style="display:none;"></canvas>
+
+    <script src="cattura.js"></script>
+</body>
+</html>
