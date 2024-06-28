@@ -9,26 +9,50 @@ fetch(jsonUrl)
     return response.json();
 })
 .then(data => {
-    //console.log(data); // debug
-    // Esempio: Imposta un'immagine di sfondo
     if (data && data.length > 0) {
-        //console.log("ciao");//debug
         var immagini = data.map(percorso => {
-        const indexBlink = percorso.indexOf("blink");
-        if (indexBlink !== -1) {
-            return percorso.substring(indexBlink + 6);
-        } else {
-            return percorso;
-        }
-    });
-    for(var i = 0; i < immagini.length; i++)
-        {
+            const indexBlink = percorso.indexOf("blink");
+            if (indexBlink !== -1) {
+                return percorso.substring(indexBlink + 6);
+            } else {
+                return percorso;
+            }
+        });
+        for (var i = 0; i < immagini.length; i++) {
             do
-            immagini[i] = immagini[i].replace("\\", "/");
-            while(immagini[i].indexOf("\\") != -1)
-        }      
+                immagini[i] = immagini[i].replace("\\", "/");
+            while (immagini[i].indexOf("\\") != -1)
+        }
+
+        const carousel = document.getElementById('carousel');
+
+        // Creare e aggiungere immagini al DOM
+        immagini.forEach((src, index) => {
+            const imgElement = document.createElement('img');
+            imgElement.src = src;
+            if (index === 0) {
+                imgElement.classList.add('active');
+            }
+            carousel.appendChild(imgElement);
+        });
+
+        const images = document.querySelectorAll('.carousel img');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (index + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        document.getElementById('prev').addEventListener('click', () => {
+            showImage(currentIndex - 1);
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            showImage(currentIndex + 1);
+        });
     }
-    document.body.style.backgroundImage = `url("${immagini[0]}")`;
 })
 .catch(error => {
     console.error('Errore nel caricamento del JSON:', error);
