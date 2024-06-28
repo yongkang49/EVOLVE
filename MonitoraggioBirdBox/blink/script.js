@@ -28,7 +28,13 @@ fetch(jsonUrl)
             while(immagini[i].indexOf("\\") != -1)
         }      
     }
-    document.body.style.backgroundImage = `url("${immagini[0]}")`;
+
+    immagini.forEach(element => {
+        var img = document.createElement('img');
+        var div = document.createElement('div');
+        div.appendChild('img');
+        document.body.appendChild('div');
+    });
 })
 .catch(error => {
     console.error('Errore nel caricamento del JSON:', error);
