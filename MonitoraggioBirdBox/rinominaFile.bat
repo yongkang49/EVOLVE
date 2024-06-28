@@ -40,10 +40,9 @@ if exist "%file_da_spostare%" (
     move "%cartella_sorgente%\%file_da_spostare%" "%cartella_destinazione%"
     if %errorlevel% equ 0 (
         echo File spostato con successo in %cartella_destinazione%.
+        node "blink\immaginiShow.js"
     ) else (
         echo Errore nello spostamento del file.
     )
-) else (
-    echo Il file %file_da_spostare% non esiste.
 )
 exit
