@@ -9,10 +9,10 @@ fetch(jsonUrl)
     return response.json();
 })
 .then(data => {
-    console.log(data); // Usa i dati qui
+    //console.log(data); // debug
     // Esempio: Imposta un'immagine di sfondo
     if (data && data.length > 0) {
-        console.log("ciao");
+        //console.log("ciao");//debug
         var immagini = data.map(percorso => {
         const indexBlink = percorso.indexOf("blink");
         if (indexBlink !== -1) {
@@ -28,13 +28,7 @@ fetch(jsonUrl)
             while(immagini[i].indexOf("\\") != -1)
         }      
     }
-
-    immagini.forEach(element => {
-        var img = document.createElement('img');
-        var div = document.createElement('div');
-        div.appendChild('img');
-        document.body.appendChild('div');
-    });
+    document.body.style.backgroundImage = `url("${immagini[0]}")`;
 })
 .catch(error => {
     console.error('Errore nel caricamento del JSON:', error);
