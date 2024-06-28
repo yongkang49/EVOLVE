@@ -9,7 +9,7 @@ const month = (now.getMonth() + 1).toString().padStart(2, '0');
 const day = now.getDate().toString().padStart(2, '0');
 const formattedDate = `${year}${month}${day}`;
 
-// Definire il percorso della directory
+// percorso della directory
 const directoryPath = path.resolve(__dirname, '../blink/immagini/', formattedDate);
 
 // Funzione per ottenere i file .png in modo asincrono
@@ -41,16 +41,16 @@ function salvaInJSON(dati, filePath) {
     });
 }
 
-// Percorso al file JSON dove salvare i dati
+// Percorso al file JSON
 const filePath = path.join(__dirname, 'dati.json');
 
-// Utilizzo della funzione per ottenere imageUrls e salvarli
+//funzione per ottenere imageUrls e salvarli
 ottieniImageUrls((err, imageUrls) => {
     if (err) {
         console.error('Errore nel ottenere imageUrls:', err);
         return;
     }
-    // Ora che abbiamo i dati, salviamoli nel file JSON
-    console.log('File .png trovati:', imageUrls);
+    //salva i dati nel file JSON
+    //console.log('File .png trovati:', imageUrls);//debug
     salvaInJSON(imageUrls, filePath);
 });

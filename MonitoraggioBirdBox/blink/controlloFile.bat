@@ -10,7 +10,7 @@ set "count=0"
 :loop
 set "current_date=%DATE%"
 set "date_formatted=%current_date:~6,4%%current_date:~3,2%%current_date:~0,2%"
-set "directory=%current_directory%\blink\immagini\%date_formatted%"
+set "directory=%current_directory%\immagini\%date_formatted%"
 REM Resetta il contatore ad ogni iterazione
 set "count=0"
 set "contFile = count"

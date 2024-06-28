@@ -11,7 +11,7 @@ REM Assicurati che gli indici siano adatti al formato della data nella tua regio
 set "date_formatted=%current_date:~6,4%%current_date:~3,2%%current_date:~0,2%"
 set "time_formatted=%current_time:~0,2%%current_time:~3,2%%current_time:~6,2%"
 REM Rimuovere i due punti dai secondi per evitare errori nel nome del file
-set "time_formatted=%time_formatted::=%"
+set "time_formatted=%time_formatted%"
 REM Costruire il nuovo nome del file con estensione .png
 set "new_filename=logfile_%date_formatted%_%time_formatted%.png"
 
