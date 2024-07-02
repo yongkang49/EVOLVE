@@ -1,17 +1,20 @@
 const fs = require('fs');
 const recursive = require('recursive-readdir');
 const path = require('path');
-
-// Ottenere la data corrente formattata
-const now = new Date();
-const year = now.getFullYear();
-const month = (now.getMonth() + 1).toString().padStart(2, '0');
-const day = now.getDate().toString().padStart(2, '0');
-const formattedDate = `${year}${month}${day}`;
-
+/*
+function getDataFormattata(data) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    return `${year}${month}${day}`;
+}
+const dataFormattato = getDataFormattata();
+console.log(dataFormattato);
+const directoryPath = path.resolve(__dirname, '../blink/immagini/', dataFormattato);
+*/
 // percorso della directory
-const directoryPath = path.resolve(__dirname, '../blink/immagini/', formattedDate);
-
+const directoryPath = path.resolve(__dirname, '../blink/immagini');
 // Funzione per ottenere i file .png in modo asincrono
 function ottieniImageUrls(callback) {
     recursive(directoryPath, (err, files) => {
@@ -25,7 +28,6 @@ function ottieniImageUrls(callback) {
         callback(null, imageUrls);
     });
 }
-
 // Funzione per salvare i dati in un file JSON
 function salvaInJSON(dati, filePath) {
     // Converti i dati in stringa JSON
@@ -35,8 +37,6 @@ function salvaInJSON(dati, filePath) {
     fs.writeFile(filePath, jsonData, 'utf8', (err) => {
         if (err) {
             console.error('Errore scrivendo nel file JSON:', err);
-        } else {
-            console.log('Dati salvati con successo in', filePath);
         }
     });
 }
@@ -51,6 +51,6 @@ ottieniImageUrls((err, imageUrls) => {
         return;
     }
     //salva i dati nel file JSON
-    //console.log('File .png trovati:', imageUrls);//debug
     salvaInJSON(imageUrls, filePath);
+    //console.log('File .png trovati:', imageUrls);//debug
 });

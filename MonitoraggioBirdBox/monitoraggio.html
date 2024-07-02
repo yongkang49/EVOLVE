@@ -5,19 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rilevazione Cambiamenti con Canvas</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
         #video {
-            width: 640px;
-            height: 480px;
+            width: 1080px;
+            height: 506px;
+            background-color: #000;
+        }
+        button {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        #canvas {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!--start button che serve per iniziare il monitoraggio-->
-    <button id="startCapture">Inizia Cattura</button>
-    <!--video di monitoraggio-->
-    <video id="video" autoplay></video>
-    <canvas id="canvas"style="display:none;"></canvas>
-
+    <div class="container">
+        <button id="startCapture">Inizia Cattura</button>
+        <button id="stopCapture" style="display: none;">Ferma Cattura</button>
+        <br>
+        <video id="video" autoplay></video>
+        <canvas id="canvas"></canvas>
+    </div>
     <script src="cattura.js"></script>
 </body>
 </html>

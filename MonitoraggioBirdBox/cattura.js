@@ -1,6 +1,6 @@
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
 let previousFrameData = null;
 let stream;
 //serve per iniziare il monitoraggio dopo il click sul start button
@@ -9,15 +9,28 @@ startButton.addEventListener('click', async () => {
     try {
         stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
         video.srcObject = stream;
+        document.getElementById('stopCapture').style.display = 'inline';
     } catch (error) {
         console.error("Errore nella cattura dello schermo:", error);
     }
+});
+const stopButton = document.getElementById('stopCapture');
+stopButton.addEventListener('click', () => {
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+    }
+    video.pause();
+    video.srcObject = null;
+    clearInterval(interval);
+    previousFrameData = null;
+    stopButton.style.display = 'none';
 });
 //serve per rilevare cambiamenti del monitoraggio
 video.addEventListener('play', () => {
     const interval = setInterval(() => {
         if (video.paused || video.ended) {
             clearInterval(interval);
+            video.style.display = "none";
             return;
         }
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);

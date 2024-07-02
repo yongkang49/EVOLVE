@@ -10,9 +10,20 @@
     <div class="header">
         <h1>Progetto BirdBox con telecamera</h1>
     </div>
-
-    <div class="carousel" id="carousel">
-        <div class="carousel-controls">
+    <!--
+    <form id="dataForm">
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data">
+        <button type="button" onclick="invioData()">Osserva</button>
+    </form>
+    -->
+    <div id="container">
+        <p>Informazioni sulla foto</p>
+        <p>Giorno: <span id="giorno"></span></p>
+        <p>Ora: <span id="ora"></span></p>
+    </div>
+    <div class="carosello" id="carosello">
+        <div class="prevNext">
             <button id="prev">&#10094;</button>
             <button id="next">&#10095;</button>
         </div>
