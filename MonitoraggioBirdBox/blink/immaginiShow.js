@@ -1,18 +1,7 @@
 const fs = require('fs');
 const recursive = require('recursive-readdir');
 const path = require('path');
-/*
-function getDataFormattata(data) {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
-    return `${year}${month}${day}`;
-}
-const dataFormattato = getDataFormattata();
-console.log(dataFormattato);
-const directoryPath = path.resolve(__dirname, '../blink/immagini/', dataFormattato);
-*/
+
 // percorso della directory
 const directoryPath = path.resolve(__dirname, '../blink/immagini');
 // Funzione per ottenere i file .png in modo asincrono
@@ -40,10 +29,8 @@ function salvaInJSON(dati, filePath) {
         }
     });
 }
-
 // Percorso al file JSON
 const filePath = path.join(__dirname, 'dati.json');
-
 //funzione per ottenere imageUrls e salvarli
 ottieniImageUrls((err, imageUrls) => {
     if (err) {
@@ -52,5 +39,4 @@ ottieniImageUrls((err, imageUrls) => {
     }
     //salva i dati nel file JSON
     salvaInJSON(imageUrls, filePath);
-    //console.log('File .png trovati:', imageUrls);//debug
 });

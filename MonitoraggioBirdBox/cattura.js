@@ -52,7 +52,7 @@ video.addEventListener('play', () => {
                 const img = canvas.toDataURL('image/png');
                 const link = document.createElement('a');
                 link.href = img;
-                link.download = 'image.png';
+                link.download = 'BirdHouse.png';
                 link.click();
             }
         }

@@ -6,10 +6,9 @@ for /f "tokens=3" %%A in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVer
 set "cartella_sorgente=%downloadsPath%"
 set "cartella_destinazione=%CD%"
 echo NON CHIUDERE QUESTO SHELL
-timeout /t 5 > nul
 start "" "http://localhost:8080/MonitoraggioBirdBox/blink/index.html"
 :: Nome del file da spostare
-set "nome_file=image.png"
+set "nome_file=BirdHouse.png"
 set "percorso_completo=%cartella_sorgente%\%nome_file%"
 :loop
 node "blink\immaginiShow.js"
